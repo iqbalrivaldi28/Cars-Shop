@@ -36,7 +36,6 @@
   grid-template-columns: 300px 300px 300px 300px;
   margin: 0px 100px;
   gap: 10px;
-
 }
 .edit-delete {
   display: flex;
