@@ -1,6 +1,6 @@
-import './Praktik-Satu.css';
+import './ProductCard.css';
 
-const PraktikSatu = (Props) => {
+const ProductCard = (Props) => {
   const { imgUrl, nameCar, descCar } = Props;
 
   return (
@@ -16,4 +16,4 @@ const PraktikSatu = (Props) => {
   );
 };
 
-export default PraktikSatu;
+export default ProductCard;

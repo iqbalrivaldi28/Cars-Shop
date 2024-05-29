@@ -1,15 +1,11 @@
-import './App.css';
-import { Products } from './data/Product';
-import PraktikSatu from './praktik-satu/Praktik-Satu';
+import './components/ProductCard.css';
+import ProductList from './components/ProductList';
 
 function App() {
   return (
     <>
-      <div className="cards">
-        {Products.map((item) => (
-          <PraktikSatu key={item.id} nameCar={item.nama} descCar={item.deskripsi} imgUrl={item.imageURL} />
-        ))}
-      </div>
+      <div className="app-title">Belanjda Mobil </div>
+      <ProductList />
     </>
   );
 }
