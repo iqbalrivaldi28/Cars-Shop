@@ -1,8 +1,11 @@
 import React from 'react';
 import { Products } from '../data/Product';
-import ProductCard from './PraktikCard';
+import ProductCard from './ProductCard';
 
 const ProductList = () => {
+
+  
+
   return (
     <div className="cards">
       {Products.map((item) => (
