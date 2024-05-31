@@ -2,7 +2,7 @@ import React from 'react';
 import ProductCard from './ProductCard';
 
 const ProductList = (props) => {
-  const { products, onDeleteProduct } = props;
+  const { products, onDeleteProduct, onSaveEdit } = props;
 
   return (
     <div className="cards">
@@ -13,7 +13,9 @@ const ProductList = (props) => {
           nameCar={item.nama} 
           descCar={item.deskripsi} 
           imgUrl={item.imageURL} 
-          onDeleteProduct={onDeleteProduct} />
+          onDeleteProduct={onDeleteProduct} 
+          onSaveEdit={onSaveEdit} // fix 
+        />
       ))}
     </div>
   );
