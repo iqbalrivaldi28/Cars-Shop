@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './ProductCard.css';
+import Swal from 'sweetalert2';
 
 const ProductCreate = (props) => {
-    const {onCreateProduct} = props
+  const { onCreateProduct } = props;
 
   const initialState = {
     nama: '',
@@ -27,9 +28,16 @@ const ProductCreate = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(formData);
-    onCreateProduct(formData)
+    onCreateProduct(formData);
     setFormData(initialState);
+
+    //? Sweet Alert
+    Swal.fire({
+      title: 'Success!',
+      text: 'Product add successfully',
+      icon: 'success',
+      confirmButtonText: 'OK',
+    });
   };
 
   return (

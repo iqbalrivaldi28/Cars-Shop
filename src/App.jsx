@@ -8,7 +8,6 @@ function App() {
   const [products, setProducts] = useState(Products)
 
   const onCreateProduct = (product) => {
-    // console.log('Data parent: ', product);
     setProducts([...products, {id: Math.round(Math.random() * 7777), ...product} ])
   }
 
