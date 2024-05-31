@@ -34,7 +34,9 @@ const ProductCard = (Props) => {
             </button>
           </>
         ) : (
-          <div className='keranjang' onClick={tambahProduct}>+ Keranjang</div>
+          <div className="keranjang" onClick={tambahProduct}>
+            + Keranjang
+          </div>
         )}
       </div>
     </div>
