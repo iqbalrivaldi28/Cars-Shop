@@ -11,11 +11,18 @@ function App() {
     setProducts([...products, {id: Math.round(Math.random() * 7777), ...product} ])
   }
 
+  const onDeleteProduct = (id) => {
+    const updatedProduct = products.filter((prod) => {
+      return prod.id != id
+    })
+    setProducts(updatedProduct)
+  }
+
   return (
     <>
       <div className="app-title">Belanjda Mobil </div>
-      <ProductCreate onCreateProduct = {onCreateProduct} />
-      <ProductList products= { products } />
+      <ProductCreate onCreateProduct = {onCreateProduct}  />
+      <ProductList products= { products } onDeleteProduct = {onDeleteProduct} />
     </>
   );
 }

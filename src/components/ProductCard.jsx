@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import './ProductCard.css';
-import { MdDelete } from "react-icons/md";
+import { MdDelete } from 'react-icons/md';
+import { RiDeleteBin7Line } from 'react-icons/ri';
+import { FaEdit } from 'react-icons/fa';
 
 const ProductCard = (Props) => {
-  const { imgUrl, nameCar, descCar } = Props;
+  const { id, imgUrl, nameCar, descCar, onDeleteProduct } = Props;
   const [jmlProduct, setJmlProduct] = useState(0);
 
   const kurangProduct = () => {
@@ -14,8 +16,17 @@ const ProductCard = (Props) => {
     setJmlProduct(jmlProduct + 1);
   };
 
+  const handleDelete = () => {
+    onDeleteProduct(id)
+  }
+
   return (
     <div className="card">
+      <div className="edit-delete">
+        <FaEdit className="icon-delete" />
+        <RiDeleteBin7Line onClick={handleDelete} className="icon-edit" />
+      </div>
+
       <img style={{ width: '100%', height: '200px', borderRadius: '10px 10px 0px 0px' }} src={imgUrl} alt={nameCar} />
       <div className="container">
         <h4>
