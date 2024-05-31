@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
 const ProductEdit = (props) => {
   const { id, imgUrl, nameCar, descCar, onCancelEdit, onSaveEdit } = props;
@@ -12,29 +13,38 @@ const ProductEdit = (props) => {
   const [formData, setFormData] = useState(initialState);
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value})
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSaveEdit(id, formData);
-  }
+
+    Swal.fire({
+      title: 'Success!',
+      text: 'You have successfully added a product',
+      icon: 'success',
+      confirmButtonText: 'OK',
+    });
+  };
 
   return (
     <div className="product-edit">
       <div className="edit-title">Edit Product</div>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <input onChange={handleChange} type="text" className="edit-input-text" placeholder="Nama Product" name='nama' value={formData.nama} />
+          <input onChange={handleChange} type="text" className="edit-input-text" placeholder="Nama Product" name="nama" value={formData.nama} />
         </div>
         <div className="form-group">
-          <input onChange={handleChange} type="text" className="edit-input-text " placeholder="Deskripsi Product" name='deskripsi' value={formData.deskripsi}/>
+          <input onChange={handleChange} type="text" className="edit-input-text " placeholder="Deskripsi Product" name="deskripsi" value={formData.deskripsi} />
         </div>
         <div className="form-group">
-          <input onChange={handleChange} type="text" className="edit-input-text " placeholder="Image Url Product" name='imageUrl' value={formData.imageUrl} />
+          <input onChange={handleChange} type="text" className="edit-input-text " placeholder="Image Url Product" name="imageUrl" value={formData.imageUrl} />
         </div>
         <input onChange={handleChange} type="submit" className="edit-input-submit save" value="Save" />
-        <button className="edit-input-submit cancel" onClick={onCancelEdit}>Cancel</button>
+        <button className="edit-input-submit cancel" onClick={onCancelEdit}>
+          Cancel
+        </button>
       </form>
     </div>
   );
