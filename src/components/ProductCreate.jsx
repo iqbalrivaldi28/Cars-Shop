@@ -28,16 +28,32 @@ const ProductCreate = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onCreateProduct(formData);
-    setFormData(initialState);
+    
+    const isString = (value) => typeof value === 'string' && isNaN(value);
 
-    //? Sweet Alert
-    Swal.fire({
-      title: 'Success!',
-      text: 'Product add successfully',
-      icon: 'success',
-      confirmButtonText: 'OK',
-    });
+    if (
+      isString(nama) && nama.trim() !== '' &&
+      isString(deskripsi) && deskripsi.trim() !== '' &&
+      isString(imageURL) && imageURL.trim() !== ''
+    ) {
+      onCreateProduct(formData);
+      setFormData(initialState);
+
+      //? Sweet Alert Success
+      Swal.fire({
+        title: 'Success!',
+        text: 'Product added successfully',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
+    } else {
+      //? Sweet Alert Error
+      Swal.fire({
+        title: 'Error!',
+        text: 'Pastikan semua data terisi dengan benar dan bukan angka',
+        icon: 'error',
+      });
+    }
   };
 
   return (
@@ -50,17 +66,42 @@ const ProductCreate = (props) => {
 
       {showForm && (
         <form className="form" onSubmit={handleSubmit}>
-          <div className="form-add-title ">Add Product</div>
+          <div className="form-add-title">Add Product</div>
           <div className="form-group">
-            <input type="text" className="add-input-text" name="nama" value={nama} onChange={handleChange} placeholder="Nama product" />
+            <input 
+              type="text" 
+              className="add-input-text" 
+              name="nama" 
+              value={nama} 
+              onChange={handleChange} 
+              placeholder="Nama product" 
+            />
           </div>
           <div className="form-group">
-            <input type="text" className="add-input-text" name="deskripsi" value={deskripsi} onChange={handleChange} placeholder="Deskripsi Product" />
+            <input 
+              type="text" 
+              className="add-input-text" 
+              name="deskripsi" 
+              value={deskripsi} 
+              onChange={handleChange} 
+              placeholder="Deskripsi Product" 
+            />
           </div>
           <div className="form-group">
-            <input type="text" className="add-input-text" name="imageURL" value={imageURL} onChange={handleChange} placeholder="Image Product" />
+            <input 
+              type="text" 
+              className="add-input-text" 
+              name="imageURL" 
+              value={imageURL} 
+              onChange={handleChange} 
+              placeholder="Image Product" 
+            />
           </div>
-          <input type="submit" className="edit-input-submit add" />
+          <input 
+            type="submit" 
+            className="edit-input-submit add" 
+            value="Add Product"
+          />
         </form>
       )}
     </div>
