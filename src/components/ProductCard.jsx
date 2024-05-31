@@ -3,6 +3,7 @@ import './ProductCard.css';
 import { MdDelete } from 'react-icons/md';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { FaEdit } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const ProductCard = (Props) => {
   const { id, imgUrl, nameCar, descCar, onDeleteProduct } = Props;
@@ -17,7 +18,24 @@ const ProductCard = (Props) => {
   };
 
   const handleDelete = () => {
-    onDeleteProduct(id)
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if(result.isConfirmed){
+          onDeleteProduct(id)
+          Swal.fire(
+            'Deleted!',
+            'Your product has been deleted.',
+            'success'
+          );
+        }
+    })
   }
 
   return (
