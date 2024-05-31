@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './ProductCard.css';
+import { MdDelete } from "react-icons/md";
 
 const ProductCard = (Props) => {
   const { imgUrl, nameCar, descCar } = Props;
