@@ -2,15 +2,14 @@ import { useEffect, useState } from 'react';
 import './components/ProductCard.css';
 import ProductList from './components/ProductList';
 import ProductCreate from './components/ProductCreate';
-import axios from 'axios';
-import { BASE_URL } from './constant/BASE_URL';
+import { createProductAPI, deleteProductAPI, editProductAPI, fetchProductAPI } from './api/ProductAPI';
 
 function App() {
   const [products, setProducts] = useState([]);
 
   //? Nampilin product
   const fetchProduct = async () => {
-    const response = await axios.get(BASE_URL);
+    const response = await fetchProductAPI();
     setProducts(response.data);
   };
 
@@ -20,14 +19,14 @@ function App() {
 
   //? Create Product
   const onCreateProduct = async (product) => {
-    const response = await axios.post(BASE_URL, product);
+    const response = await createProductAPI(product);
 
     setProducts([...products, response.data]);
   };
 
   //? Delete Product
   const onDeleteProduct = async (id) => {
-    await axios.delete(`${BASE_URL}/${id}`);
+    await deleteProductAPI(id);
 
     const updatedProduct = products.filter((prod) => {
       return prod.id !== id;
@@ -37,7 +36,7 @@ function App() {
 
   //? Edit prodct
   const onSaveEdit = async (id, updatedData) => {
-    const response = await axios.put(`${BASE_URL}/${id}`, updatedData);
+    const response = await editProductAPI(id, updatedData);
 
     const updatedProduct = products.map((prod) => {
       if (prod.id === id) {
@@ -47,10 +46,10 @@ function App() {
         };
       }
 
-      return prod
+      return prod;
     });
 
-    setProducts(updatedProduct)
+    setProducts(updatedProduct);
   };
 
   return (
