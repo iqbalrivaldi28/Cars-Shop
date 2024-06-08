@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import './components/ProductCard.css';
 import ProductList from './components/ProductList';
 import ProductCreate from './components/ProductCreate';
+import ProductContext from './context/ProductContext';
 
 
 function App() {
 
+  const {fetchProduct} = useContext(ProductContext)
 
   useEffect(() => {
     fetchProduct();
@@ -16,8 +18,8 @@ function App() {
   return (
     <>
       <div className="app-title">Belanja Mobil</div>
-      <ProductCreate onCreateProduct={onCreateProduct} />
-      <ProductList products={products} onDeleteProduct={onDeleteProduct} onSaveEdit={onSaveEdit} />
+      <ProductCreate  />
+      <ProductList  />
     </>
   );
 }

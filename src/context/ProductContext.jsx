@@ -56,9 +56,9 @@ function Provider({ children }) {
   };
 
   return (
-    <productContext.Provider value={valueToShare}>
+    <ProductContext.Provider value={valueToShare}>
         {children}
-    </productContext.Provider>
+    </ProductContext.Provider>
   )
 }
 

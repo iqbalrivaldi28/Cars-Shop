@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ProductCard from './ProductCard';
+import ProductContext from '../context/ProductContext';
 
-const ProductList = (props) => {
-  const { products, onDeleteProduct, onSaveEdit } = props;
+const ProductList = ({ onDeleteProduct, onSaveEdit}) => {
+
+  const {products} = useContext(ProductContext) 
 
   return (
+  
     <div className="cards">
       {products.map((item) => (
         <ProductCard 
