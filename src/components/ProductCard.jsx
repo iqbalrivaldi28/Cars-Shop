@@ -8,9 +8,9 @@ import ProductEdit from './ProductEdit';
 import ProductContext from '../context/ProductContext';
 
 const ProductCard = (Props) => {
-  const { id, imgUrl, nameCar, descCar, onSaveEdit } = Props;
+  const { id, imgUrl, nameCar, descCar } = Props;
 
-  const {onDeleteProduct} = useContext(ProductContext)
+  const {onDeleteProduct, onSaveEdit} = useContext(ProductContext)
 
   const [jmlProduct, setJmlProduct] = useState(0);
   const [showEdit, setShowEdit] = useState(false);
