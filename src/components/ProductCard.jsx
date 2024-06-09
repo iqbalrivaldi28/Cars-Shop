@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './ProductCard.css';
 import { MdDelete } from 'react-icons/md';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 import { FaEdit } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import ProductEdit from './ProductEdit';
+import ProductContext from '../context/ProductContext';
 
 const ProductCard = (Props) => {
-  const { id, imgUrl, nameCar, descCar, onDeleteProduct, onSaveEdit } = Props;
+  const { id, imgUrl, nameCar, descCar, onSaveEdit } = Props;
+
+  const {onDeleteProduct} = useContext(ProductContext)
 
   const [jmlProduct, setJmlProduct] = useState(0);
   const [showEdit, setShowEdit] = useState(false);
