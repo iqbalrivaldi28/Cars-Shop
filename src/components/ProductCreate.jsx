@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './ProductCard.css';
 import Swal from 'sweetalert2';
+import ProductContext from '../context/ProductContext';
 
-const ProductCreate = (props) => {
-  const { onCreateProduct } = props;
+const ProductCreate = () => {
+  
+  const {onCreateProduct} = useContext(ProductContext) 
 
   const initialState = {
     nama: '',
